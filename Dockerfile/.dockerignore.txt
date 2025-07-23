@@ -1,0 +1,30 @@
+# Ignorer l'environnement virtuel
+env/
+venv/
+
+# Ignorer les fichiers de cache Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignorer les fichiers SQLite (base locale)
+*.sqlite3
+
+# Ignorer les fichiers de couverture de test
+.coverage
+
+# Ignorer les logs
+*.log
+
+# Ignorer les fichiers d'arborescence et autres docs temporaires
+arborescence.txt
+arborescence_courte.txt
+report_test.txt
+
+# Ignorer Dockerfile qui ne sert pas (tu en as plusieurs)
+Dockerfile/
+dockerfile.dockerfile
+
+# Ignorer fichiers système
+.DS_Store
+Thumbs.db
