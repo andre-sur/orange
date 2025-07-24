@@ -1,3 +1,20 @@
-**/__pycache__
+# Environnements virtuels
+venv/
+env/
+
+# Bases de données locales
+*.sqlite3
+
+# Fichiers secrets
+.env
+
+# Dossiers de nettoyage Git
+orange-clean/
+orange-clean2/
+
+# Fichiers/dossiers Python temporaires
+__pycache__/
 *.pyc
-venv
+
+# Fichiers système
+.DS_Store
