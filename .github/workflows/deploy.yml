@@ -24,7 +24,8 @@ jobs:
 
     - name: Run tests
       run: |
-        pytest --cov=. --cov-fail-under=80
+        pytest --cov=. --cov-fail-under=80 -p pytest_cov
+
 
   docker:
     needs: build-test
