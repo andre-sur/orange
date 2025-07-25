@@ -26,6 +26,9 @@ jobs:
       run: |
         pytest --cov=. --cov-fail-under=80 -p pytest_cov
 
+    - name: Debug installed packages
+      run: pip freeze
+
 
   docker:
     needs: build-test
