@@ -2,7 +2,7 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ "main" ]  # ou "master" selon ta branche principale
+    branches: [ "main" ]
 
 jobs:
   build-test:
@@ -22,15 +22,15 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Install pytest-cov explicitly
+      run: pip install pytest-cov
+
     - name: Run tests
       run: |
-        pytest --cov=. --cov-fail-under=80 -p pytest_cov
+        pytest --cov=. --cov-fail-under=80
 
     - name: Debug installed packages
       run: pip freeze
-
-    - name: Install pytest-cov explicitly
-      run: pip install pytest-cov
 
   docker:
     needs: build-test
