@@ -29,6 +29,8 @@ jobs:
     - name: Debug installed packages
       run: pip freeze
 
+    - name: Install pytest-cov explicitly
+      run: pip install pytest-cov
 
   docker:
     needs: build-test
