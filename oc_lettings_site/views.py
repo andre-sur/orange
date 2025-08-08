@@ -7,4 +7,3 @@ def index(request):
 
 def error_500_view(request):
     raise Exception("Erreur serveur volontaire")
-
