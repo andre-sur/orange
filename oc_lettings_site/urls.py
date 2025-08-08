@@ -1,4 +1,4 @@
-""" OLD VERSION
+"""OLD VERSION
 from django.contrib import admin
 from django.urls import path
 
@@ -13,14 +13,15 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 """
+
 from django.contrib import admin
 from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('lettings/', include('lettings.urls')),
-    path('profiles/', include('profiles.urls')),
-    path('admin/', admin.site.urls),
-    path('force500/', views.error_500_view),
+    path("", views.index, name="index"),
+    path("lettings/", include("lettings.urls")),
+    path("profiles/", include("profiles.urls")),
+    path("admin/", admin.site.urls),
+    path("force500/", views.error_500_view),
 ]
