@@ -1,11 +1,11 @@
-# Utilise une image officielle Python comme base
+# Utilise une image officielle Python 3.11 slim comme base
 FROM python:3.11-slim
 
 # Variables d’environnement pour Python
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Crée et définit le dossier de travail
+# Crée et définit le dossier de travail dans le container
 WORKDIR /app
 
 # Installe les dépendances système nécessaires
@@ -14,18 +14,20 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Copie les fichiers requirements.txt et installe les dépendances Python
+# Copie les fichiers requirements.txt dans le container
 COPY requirements.txt /app/
+
+# Met à jour pip et installe les dépendances Python
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Copie le reste du code de l’application
+# Copie tout le code source dans le container
 COPY . /app/
 
-# Expose le port 8000
+# Expose le port 8000 pour le serveur Django
 EXPOSE 8000
 
-# Commande pour démarrer le serveur avec gunicorn
+# Commande par défaut pour lancer le serveur Django avec gunicorn
 CMD ["gunicorn", "oc_lettings_site.wsgi:application", "--bind", "0.0.0.0:8000"]
-# Commande pour lancer le serveur Django
-#CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Si tu veux lancer avec le serveur de dev Django, décommente la ligne suivante et commente la ligne CMD au-dessus
+# CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

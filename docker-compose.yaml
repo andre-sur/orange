@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   web:
+    image: oc_lettings_local:latest  # Nom fixe de l'image
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:

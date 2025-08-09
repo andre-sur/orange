@@ -1,6 +1,5 @@
 # Variables
 DOCKER_USER=andresur
-# Nom du repo Git automatiquement
 REPO_NAME=$(shell basename `git rev-parse --show-toplevel`)
 
 # Nom fixe si on veut overrider
@@ -9,24 +8,21 @@ FIXED_REPO_NAME=orange
 # SHA du commit
 GIT_HASH=$(shell git rev-parse --short HEAD)
 
-# ----- CONFIG : Choisis ici ce que tu veux utiliser -----
-
+# Choix d'image/tag
 # Pour utiliser le nom du repo + hash (ex: andresur/oc-lettings:abc123)
-#IMAGE_NAME=$(DOCKER_USER)/$(REPO_NAME)
-#TAG=$(GIT_HASH)
-
+# IMAGE_NAME=$(DOCKER_USER)/$(REPO_NAME)
+# TAG=$(GIT_HASH)
 
 # Pour utiliser le nom fixe + latest (ex: andresur/orange:latest)
 IMAGE_NAME=$(DOCKER_USER)/$(FIXED_REPO_NAME)
 TAG=latest
 
 REPO_NAME=$(shell basename `git rev-parse --show-toplevel`)
-IMAGE_NAME=$(DOCKER_USER)/$(REPO_NAME)
-
+IMAGE_NAME_HASH=$(DOCKER_USER)/$(REPO_NAME)
 GIT_HASH=$(shell git rev-parse --short HEAD)
 COVERAGE_THRESHOLD=80
 
-.PHONY: lint test coverage check-coverage build push run all
+.PHONY: lint test coverage check-coverage build push run all tag push-latest all-latest install ci
 
 # Linting avec flake8 (à adapter si tu utilises un autre linter)
 lint:
@@ -53,23 +49,33 @@ check-coverage:
 
 # Build l'image Docker taguée avec le hash Git
 build:
-	docker build -t $(IMAGE_NAME):$(GIT_HASH) .
+	docker build -t $(IMAGE_NAME_HASH):$(GIT_HASH) .
 
-# Push l'image Docker sur Docker Hub
+# Push l'image Docker sur Docker Hub avec le hash Git
 push:
-	docker push $(IMAGE_NAME):$(GIT_HASH)
+	docker push $(IMAGE_NAME_HASH):$(GIT_HASH)
+
+# Tag l'image locale avec le tag latest
+tag:
+	docker tag $(IMAGE_NAME_HASH):$(GIT_HASH) $(IMAGE_NAME):$(TAG)
+
+# Push l'image Docker sur Docker Hub avec le tag latest
+push-latest:
+	docker push $(IMAGE_NAME):$(TAG)
 
 # Run l'image Docker localement (expose port 8000, adapte selon ton app)
 run:
-	docker run --rm -p 8000:8000 $(IMAGE_NAME):$(GIT_HASH)
+	docker run --rm -p 8000:8000 $(IMAGE_NAME_HASH):$(GIT_HASH)
 
-# Tout enchaîner d'un coup
+# Tout enchaîner avec hash (lint, test, coverage, build, push)
 all: lint test check-coverage build push run
+
+# Tout enchaîner avec tag latest (build, tag, push latest)
+all-latest: build tag push-latest
 
 # Install dependencies
 install:
 	pip install -r requirements.txt
 
-# Full pipeline for CI (sans run local)
+# Full pipeline pour CI (sans run local)
 ci: lint test check-coverage build
-
