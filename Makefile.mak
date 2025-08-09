@@ -55,6 +55,11 @@ build:
 push:
 	docker push $(IMAGE_NAME_HASH):$(GIT_HASH)
 
+# Build + Push en un seul coup
+deploy: build push
+	@echo "✅ Image envoyée sur Docker Hub : $(IMAGE_NAME):$(TAG)"
+	@echo "ℹ️  Va sur Render et clique sur 'Manual Deploy → Deploy latest image'."
+
 # Tag l'image locale avec le tag latest
 tag:
 	docker tag $(IMAGE_NAME_HASH):$(GIT_HASH) $(IMAGE_NAME):$(TAG)
