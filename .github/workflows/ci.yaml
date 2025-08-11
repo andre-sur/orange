@@ -18,9 +18,11 @@ jobs:
       with:
         python-version: '3.11'
 
+    - name: List root files
+      run: ls -la
+
     - name: Install dependencies
       run: make install-dev
-
 
     - name: Run lint, tests, coverage, build
       run: make ci
