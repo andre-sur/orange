@@ -26,7 +26,8 @@ COVERAGE_THRESHOLD=80
 
 # Linting avec flake8 (à adapter si tu utilises un autre linter)
 lint:
-	flake8 .
+	flake8 . --exclude=migrations,tests,env,__pycache__
+
 
 # Tests avec pytest et couverture
 test:
