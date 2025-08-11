@@ -19,9 +19,11 @@ from django.urls import path, include
 from . import views
 from django.http import HttpResponseServerError
 
+
 def trigger_error(request):
     division_by_zero = 1 / 0  # provoque une erreur volontaire
     return HttpResponseServerError("This should never be seen.")
+
 
 urlpatterns = [
     path("", views.index, name="index"),
@@ -29,5 +31,5 @@ urlpatterns = [
     path("profiles/", include("profiles.urls")),
     path("admin/", admin.site.urls),
     path("force500/", views.error_500_view),
-    path('sentry-debug/', trigger_error, name='sentry-debug'),
+    path("sentry-debug/", trigger_error, name="sentry-debug"),
 ]
