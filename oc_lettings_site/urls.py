@@ -17,7 +17,6 @@ urlpatterns = [
 from django.contrib import admin
 from django.urls import path, include
 from . import views
-from django.http import HttpResponseServerError
 
 
 urlpatterns = [
@@ -26,5 +25,4 @@ urlpatterns = [
     path("profiles/", include("profiles.urls")),
     path("admin/", admin.site.urls),
     path("force500/", views.error_500_view),
-    path("sentry-debug/", trigger_error, name="sentry-debug"),
 ]
