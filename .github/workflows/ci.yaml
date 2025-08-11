@@ -18,7 +18,7 @@ jobs:
       with:
         python-version: '3.11'
 
-    - name: List root files
+    - name: Check files in repo root
       run: ls -la
 
     - name: Install dependencies
