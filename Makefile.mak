@@ -79,8 +79,8 @@ all: lint test check-coverage build push run
 all-latest: build tag push-latest
 
 # Install dependencies for production
-install:
-	pip install -r requirements.txt
+install-dev:
+	pip install -r requirements.txt -r requirements-dev.txt
 
 # Full pipeline pour CI (sans run local)
 ci: lint test check-coverage build
