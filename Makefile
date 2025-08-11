@@ -31,8 +31,7 @@ lint:
 
 # Tests avec pytest et couverture
 test:
-	pytest oc_lettings_site/tests.py --cov=./ --cov-report=term-missing
-
+	pytest --cov=. --cov-report=term-missing
 
 # Génère un rapport de couverture en format XML pour analyse
 coverage:
