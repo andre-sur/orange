@@ -4,3 +4,4 @@ flake8==3.7.0
 sphinx
 sphinx_rtd_theme
 six==1.16.0
+pytest>=7.0.0
