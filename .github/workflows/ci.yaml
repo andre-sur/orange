@@ -24,7 +24,7 @@ jobs:
 
     - name: Run lint, tests, coverage, build
       run: make ci
-
+#FORWARD AUTOMATIQUE VERS DOCK (A COMMENTER POUR FRAGMENTER)
     - name: Log in to DockerHub
       uses: docker/login-action@v3
       with:
