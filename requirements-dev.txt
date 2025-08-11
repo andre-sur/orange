@@ -1,0 +1,6 @@
+pytest-django>=4.0.0
+pytest-cov>=4.0.0
+flake8==3.7.0
+sphinx
+sphinx_rtd_theme
+six==1.16.0

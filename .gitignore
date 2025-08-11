@@ -8,15 +8,6 @@ env/
 # Fichiers secrets
 .env
 
-orange-clean/
-orange-clean2/
-
-
-
-# Dossiers de nettoyage Git
-orange-clean/
-orange-clean2/
-
 # Fichiers/dossiers Python temporaires
 __pycache__/
 *.pyc
