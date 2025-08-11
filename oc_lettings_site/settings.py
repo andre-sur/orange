@@ -4,10 +4,11 @@ import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
 sentry_sdk.init(
-    dsn="https://7a5e5e89b9230f969720be074a5cce31@o4509518763917312.ingest.de.sentry.io/4509813884256336",
+    dsn="https://7a5e5e89b9230f969720be074a5cce31@o450951876" \
+    "3917312.ingest.de.sentry.io/4509813884256336",
     integrations=[DjangoIntegration()],
-    traces_sample_rate=1.0,  # Ajuste selon le volume de traces que tu veux capter
-    send_default_pii=True,  # Pour envoyer des infos utilisateurs anonymisées (optionnel)
+    traces_sample_rate=1.0,  # 
+    send_default_pii=True,  # 
 )
 
 
@@ -19,7 +20,7 @@ sentry_sdk.init(
 )
 
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -107,13 +108,16 @@ AUTH_PASSWORD_VALIDATORS = [
         "UserAttributeSimilarityValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation." "MinimumLengthValidator",
+        "NAME": "django.contrib.auth.password_"
+        "validation." "MinimumLengthValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation." "CommonPasswordValidator",
+        "NAME": "django.contrib.auth.password_"
+        "validation." "CommonPasswordValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation." "NumericPasswordValidator",
+        "NAME": "django.contrib.auth.password_"
+        "validation." "NumericPasswordValidator",
     },
 ]
 
