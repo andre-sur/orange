@@ -27,7 +27,7 @@ COPY . /app/
 # Expose le port 8000 pour le serveur Django
 EXPOSE 8000
 
-# Commande par défaut pour lancer le serveur Django avec gunicorn
+# lancer le serveur Django avec gunicorn
 CMD ["gunicorn", "oc_lettings_site.wsgi:application", "--bind", "0.0.0.0:8000"]
-# Si tu veux lancer avec le serveur de dev Django, décommente la ligne suivante et commente la ligne CMD au-dessus
+# pour server DJango, utiliser
 # CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
