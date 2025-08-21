@@ -1,0 +1,26 @@
+Tables de la base :
+django_migrations
+sqlite_sequence
+auth_group_permissions
+auth_user_groups
+auth_user_user_permissions
+django_admin_log
+django_content_type
+auth_permission
+auth_group
+auth_user
+oc_lettings_site_address
+oc_lettings_site_profile
+oc_lettings_site_letting
+django_session
+lettings_address
+lettings_letting
+profiles_profile
+
+Colonnes de la table Profile :
+id (INTEGER)
+favorite_city (varchar(64))
+user_id (INTEGER)
+
+Résultats des profils avec favorite_city commençant par P :
+user_id: 4, favorite_city: Paris
