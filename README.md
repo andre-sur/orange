@@ -35,7 +35,7 @@ Dans le reste de la documentation sur le développement local, il est supposé q
 #### Exécuter le site
 
 - `cd /path/to/Python-OC-Lettings-FR`
-- `source venv/bin/activate`
+- `.\env\Scripts\Activate.ps1`
 - `pip install --requirement requirements.txt`
 - `python manage.py runserver`
 - Aller sur `http://localhost:8000` dans un navigateur.
@@ -44,7 +44,7 @@ Dans le reste de la documentation sur le développement local, il est supposé q
 #### Linting
 
 - `cd /path/to/Python-OC-Lettings-FR`
-- `source venv/bin/activate`
+- `.\env\Scripts\Activate.ps1`
 - `flake8`
 
 #### Tests unitaires (et enregistrement d'un rapport en txt)
@@ -68,5 +68,5 @@ puis en allant voir le contenu du rapport créé : rapport_sql.txt
 
 Utilisation de PowerShell, comme ci-dessus sauf :
 
-- Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
-- Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+- Pour activer l'environnement virtuel, `.\env\Scripts\Activate.ps1` 
+
