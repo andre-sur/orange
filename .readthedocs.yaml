@@ -6,3 +6,6 @@ sphinx:
 python:
   version: 3.11
 #commentaire inutile pour rafraichir le dépot au niveau de read the doc
+
+  install:
+    - requirements: docs/requirements.txt
