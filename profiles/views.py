@@ -3,6 +3,7 @@ from .models import Profile
 
 
 def profiles_index(request):
+    """ceci est un commentaire"""
     profiles_list = Profile.objects.all()
     context = {"profiles_list": profiles_list}
     return render(request, "profiles_index.html", context)

@@ -1,3 +1,8 @@
+
+
+COMMENT DEPLOYER DIRECTEMENT A PARTIR DDE RIEN DU TOUT JUSTE LES FICHIERS EN LOCAL DANS UN DOCKER SAN PYTHON NI RIEN 
+PREREQUIS "CLIENT" DOCKER : INSTALLER APP DOCK FOR WINDOWS PAS BESOIN DE COMPTE
+
 ## Résumé
 
 Site web d'Orange County Lettings
@@ -70,3 +75,26 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 - Pour activer l'environnement virtuel, `.\env\Scripts\Activate.ps1` 
 
+
+Installation avec Docker
+------------------------
+
+1. **Construisez l'image Docker** :
+
+   .. code-block:: bash
+
+      docker build -t nom-de-l-image .
+
+2. **Lancez le conteneur** :
+
+   .. code-block:: bash
+
+      docker run -d -p 8000:8000 nom-de-l-image
+
+3. **Accédez au projet** :
+
+   Ouvrez un navigateur et allez à l’adresse suivante :
+
+   .. code-block:: none
+
+      http://localhost:8000
