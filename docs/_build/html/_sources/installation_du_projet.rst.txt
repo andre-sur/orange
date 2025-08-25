@@ -5,6 +5,8 @@ Prérequis
 ---------
 
 Avant d’installer le projet, assurez-vous d’avoir les éléments suivants :
+DOCKER direct 
+
 
 - Python 3.8 ou version ultérieure
 - pip
