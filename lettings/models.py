@@ -24,6 +24,10 @@ class Address(models.Model):
         max_length=3, validators=[MinLengthValidator(3)]
     )
 
+    class Meta:
+        verbose_name = "Adresse"
+        verbose_name_plural = "Adresses"
+
     def __str__(self):
         """
         Retourne une représentation lisible de l'adresse.
