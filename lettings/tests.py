@@ -7,9 +7,9 @@ class LettingsTests(TestCase):
     """
     TestCase pour les vues de l'application 'lettings'.
 
-    Cette classe vérifie que :
-    - La page d'index des lettings est accessible.
-    - La page de détail d'un letting spécifique est accessible.
+    Cette classe vérifie :
+    - L'accessibilité de la page d'index des lettings (test d'intégration).
+    - L'accessibilité de la page de détail d'un letting spécifique (test d'intégration).
 
     Attributs:
         client (Client): Client de test pour simuler les requêtes HTTP.
@@ -38,16 +38,40 @@ class LettingsTests(TestCase):
             title="Nice Letting", address=self.address
         )
 
+    # ----------------------------
+    # Test d'intégration
+    # ----------------------------
     def test_lettings_index(self):
         """
-        Teste que la vue de la liste des lettings retourne un code HTTP 200.
+        Vérifie que la vue de la liste des lettings retourne un code HTTP 200.
+
+        Type: Test d'intégration
+        Pourquoi: teste l'interaction entre la vue, le modèle et le template.
         """
         response = self.client.get(reverse("lettings_index"))
         self.assertEqual(response.status_code, 200)
 
+    # ----------------------------
+    # Test d'intégration
+    # ----------------------------
     def test_letting_detail(self):
         """
-        Teste que la vue du détail d'un letting spécifique retourne un code HTTP 200.
+        Vérifie que la vue du détail d'un letting spécifique retourne un code HTTP 200.
+
+        Type: Test d'intégration
+        Pourquoi: teste l'interaction entre la vue, le modèle et le template.
         """
         response = self.client.get(reverse("letting", args=[self.letting.id]))
         self.assertEqual(response.status_code, 200)
+
+    # ----------------------------
+    # Exemple de test unitaire possible
+    # ----------------------------
+    def test_letting_str_method(self):
+        """
+        Vérifie la méthode __str__ du modèle Letting.
+
+        Type: Test unitaire
+        Pourquoi: teste uniquement la méthode __str__ sans interaction avec d'autres composants.
+        """
+        self.assertEqual(str(self.letting), "Nice Letting")

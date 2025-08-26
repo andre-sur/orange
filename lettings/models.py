@@ -25,6 +25,8 @@ class Address(models.Model):
     )
 
     class Meta:
+        db_table = "oc_lettings_site_address"
+        managed = False
         verbose_name = "Adresse"
         verbose_name_plural = "Adresses"
 
@@ -49,6 +51,10 @@ class Letting(models.Model):
 
     title = models.CharField(max_length=256)
     address = models.OneToOneField(Address, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "oc_lettings_site_letting"
+        managed = False
 
     def __str__(self):
         """
