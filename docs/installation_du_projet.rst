@@ -5,23 +5,20 @@ Prérequis
 ---------
 
 Avant d’installer le projet, assurez-vous d’avoir les éléments suivants :
-DOCKER direct 
-
 
 - Python 3.8 ou version ultérieure
 - pip
-- virtualenv (optionnel mais recommandé)
+- virtualenv (recommandé pour installer de façon localisé)
 - Git (si vous clonez depuis un dépôt)
-- Docker (si vous utilisez une version conteneurisée)
+- Docker 
 
 Installation en local
----------------------
 
 1. **Clonez le dépôt** (si nécessaire) :
 
    .. code-block:: bash
 
-      git clone https://github.com/votre-utilisateur/nom-du-projet.git
+      git clone https://github.com/andre-sur/orange.git
       cd nom-du-projet
 
 2. **Créez et activez un environnement virtuel** :
@@ -38,13 +35,7 @@ Installation en local
 
       pip install -r requirements.txt
 
-4. **Appliquez les migrations et créez la base de données** :
-
-   .. code-block:: bash
-
-      python manage.py migrate
-
-5. **Lancez le serveur de développement** :
+4. **Lancez le serveur de développement** :
 
    .. code-block:: bash
 

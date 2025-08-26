@@ -14,7 +14,7 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="Procédures de déploiement et de gestion" href="deploiement.html" />
+    <link rel="next" title="Déploiement non local" href="deploiement.html" />
     <link rel="prev" title="Interfaces de programmation" href="api_interfaces.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -35,30 +35,25 @@
             
   <section id="guide-dutilisation">
 <h1>Guide d’utilisation<a class="headerlink" href="#guide-dutilisation" title="Lien vers cette rubrique">¶</a></h1>
-<p>Ce guide décrit comment utiliser l’application Orange County Lettings du point de vue d’un utilisateur final. Il présente les principales fonctionnalités accessibles via l’interface web, avec des cas d’usage concrets.</p>
-<section id="acces-a-l-application">
-<h2>Accès à l'application<a class="headerlink" href="#acces-a-l-application" title="Lien vers cette rubrique">¶</a></h2>
-<p>L'application est accessible via l’URL suivante (exemple de déploiement) :</p>
+<p>Ce guide décrit comment utiliser l’application Orange County Lettings du point de vue d’un utilisateur final.
+Il présente les principales fonctionnalités présentes sur l’interface web.</p>
+<p>Accès à l'application</p>
+<p>L'application est accessible via l’URL suivante :</p>
 <blockquote>
 <div><p><a class="reference external" href="https://orange-vpow.onrender.com/">https://orange-vpow.onrender.com/</a></p>
 </div></blockquote>
-</section>
-<section id="navigation-generale">
-<h2>Navigation générale<a class="headerlink" href="#navigation-generale" title="Lien vers cette rubrique">¶</a></h2>
+<p>Navigation générale</p>
 <p>La page d’accueil propose deux sections principales :</p>
 <ul class="simple">
 <li><p><strong>Lettings</strong> : Locations disponibles</p></li>
 <li><p><strong>Profiles</strong> : Profils des utilisateurs</p></li>
 </ul>
-<p>L’utilisateur peut naviguer via le menu de navigation situé dans la barre supérieure.</p>
-</section>
-<section id="cas-dutilisation">
-<h2>Cas d’utilisation<a class="headerlink" href="#cas-dutilisation" title="Lien vers cette rubrique">¶</a></h2>
+<p>Menu de navigation situé en haut à droite.</p>
+<p>Cas d’utilisation</p>
 <p>### 1. Consulter la liste des locations</p>
 <ul class="simple">
 <li><p>Depuis la page d’accueil, cliquer sur <strong>“Lettings”</strong>.</p></li>
 <li><p>Une liste des logements disponibles s’affiche.</p></li>
-<li><p>Chaque entrée comporte un lien vers une page de détail.</p></li>
 </ul>
 <p>### 2. Consulter les détails d’un logement</p>
 <ul class="simple">
@@ -72,7 +67,7 @@
 <p>### 3. Consulter les profils utilisateurs</p>
 <ul class="simple">
 <li><p>Cliquer sur <strong>“Profiles”</strong> depuis le menu.</p></li>
-<li><p>Une liste de tous les utilisateurs enregistrés s’affiche.</p></li>
+<li><p>Une liste des utlisateurs s’affiche.</p></li>
 </ul>
 <p>### 4. Voir le détail d’un profil</p>
 <ul class="simple">
@@ -81,21 +76,16 @@
 - Nom d’utilisateur
 - Ville préférée</p></li>
 </ul>
-</section>
-<section id="public-cible">
-<h2>Public cible<a class="headerlink" href="#public-cible" title="Lien vers cette rubrique">¶</a></h2>
-<p>L’application est conçue pour :
-- Les agents immobiliers souhaitant accéder à des données de location.
-- Les administrateurs système via Django admin.
-- Les utilisateurs voulant consulter des logements.</p>
-</section>
-<section id="limitations">
-<h2>Limitations<a class="headerlink" href="#limitations" title="Lien vers cette rubrique">¶</a></h2>
+<p>Public cible</p>
+<p>L’application permet :
+- accès à des données de location (agent immobilier)
+- Modification de la base via /admin (pour administrateurs autorisés)
+- Base de profils et préférence</p>
+<p>Limitations actuelles</p>
 <ul class="simple">
-<li><p>L’application ne permet pas encore la création/modification via interface publique.</p></li>
-<li><p>Pas de système d’authentification ou de gestion de session utilisateur (hors admin).</p></li>
+<li><p>Création et modification uniquement via /admin (pas d'interface directe publique).</p></li>
+<li><p>Site sans portail d'accès de session (hors admin).</p></li>
 </ul>
-</section>
 </section>
 
 
@@ -132,15 +122,8 @@
 <li class="toctree-l1"><a class="reference internal" href="technologies_et_langages.html">Technologies et langages utilisés</a></li>
 <li class="toctree-l1"><a class="reference internal" href="structure_bdd_modeles.html">Structure de la base de données et des modèles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_interfaces.html">Interfaces de programmation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Guide d’utilisation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#acces-a-l-application">Accès à l'application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#navigation-generale">Navigation générale</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#cas-dutilisation">Cas d’utilisation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#public-cible">Public cible</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#limitations">Limitations</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="deploiement.html">Procédures de déploiement et de gestion</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Guide d’utilisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploiement.html">Déploiement non local</a></li>
 </ul>
 
 <div class="relations">
@@ -148,7 +131,7 @@
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="api_interfaces.html" title="Chapitre précédent">Interfaces de programmation</a></li>
-      <li>Next: <a href="deploiement.html" title="Chapitre suivant">Procédures de déploiement et de gestion</a></li>
+      <li>Next: <a href="deploiement.html" title="Chapitre suivant">Déploiement non local</a></li>
   </ul></li>
 </ul>
 </div>

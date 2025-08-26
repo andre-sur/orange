@@ -1,100 +1,85 @@
 
+Déploiement local (développement)
+---------------------------------
 
-COMMENT DEPLOYER DIRECTEMENT A PARTIR DDE RIEN DU TOUT JUSTE LES FICHIERS EN LOCAL DANS UN DOCKER SAN PYTHON NI RIEN 
-PREREQUIS "CLIENT" DOCKER : INSTALLER APP DOCK FOR WINDOWS PAS BESOIN DE COMPTE
-
-## Résumé
-
-Site web d'Orange County Lettings
-
-## Développement local
-
-### Prérequis
-
-- Compte GitHub avec accès en lecture à ce repository
-- Git CLI
-- SQLite3 CLI
-- Interpréteur Python, version 3.6 ou supérieure
-
-Dans le reste de la documentation sur le développement local, il est supposé que la commande `python` de votre OS shell exécute l'interpréteur Python ci-dessus (à moins qu'un environnement virtuel ne soit activé).
-
-### macOS / Linux
-
-#### Cloner le repository
-
-- `cd /path/to/put/project/in`
-- `git clone https://github.com/OpenClassrooms-Student-Center/Python-OC-Lettings-FR.git`
-
-#### Créer l'environnement virtuel
-
-- `cd /path/to/Python-OC-Lettings-FR`
-- `python -m venv venv`
-- `apt-get install python3-venv` (Si l'étape précédente comporte des erreurs avec un paquet non trouvé sur Ubuntu)
-- Activer l'environnement `source venv/bin/activate`
-- Confirmer que la commande `python` exécute l'interpréteur Python dans l'environnement virtuel
-`which python`
-- Confirmer que la version de l'interpréteur Python est la version 3.6 ou supérieure `python --version`
-- Confirmer que la commande `pip` exécute l'exécutable pip dans l'environnement virtuel, `which pip`
-- Pour désactiver l'environnement, `deactivate`
-
-#### Exécuter le site
-
-- `cd /path/to/Python-OC-Lettings-FR`
-- `.\env\Scripts\Activate.ps1`
-- `pip install --requirement requirements.txt`
-- `python manage.py runserver`
-- Aller sur `http://localhost:8000` dans un navigateur.
-- Confirmer que le site fonctionne et qu'il est possible de naviguer et faire des tests via admin pour alimenter la base de données.
-
-#### Linting
-
-- `cd /path/to/Python-OC-Lettings-FR`
-- `.\env\Scripts\Activate.ps1`
-- `flake8`
-
-#### Tests unitaires (et enregistrement d'un rapport en txt)
-
-- `cd /path/to/Python-OC-Lettings-FR`
-- `source venv/bin/activate`
-- `pytest > rapport.txt` 
-
-#### Base de données
-
-Vérifier que tout est ok en lançant 
-`python check_sql_database.py`
-puis en allant voir le contenu du rapport créé : rapport_sql.txt
-
-#### Panel d'administration
-
-- Aller sur `http://localhost:8000/admin`
-- Connectez-vous avec l'utilisateur `admin`, mot de passe `difficile`
-
-### Windows
-
-Utilisation de PowerShell, comme ci-dessus sauf :
-
-- Pour activer l'environnement virtuel, `.\env\Scripts\Activate.ps1` 
-
-
-Installation avec Docker
-------------------------
-
-1. **Construisez l'image Docker** :
+1. **Cloner le dépôt**
 
    .. code-block:: bash
 
-      docker build -t nom-de-l-image .
+      git clone https://github.com/votre-utilisateur/orange-county-lettings.git
+      cd orange-county-lettings
 
-2. **Lancez le conteneur** :
+2. **Créer un environnement virtuel**
 
    .. code-block:: bash
 
-      docker run -d -p 8000:8000 nom-de-l-image
+      python -m venv env
+      source env/bin/activate  # sous Linux/macOS
+      env\Scripts\activate     # sous Windows
 
-3. **Accédez au projet** :
+3. **Installer les dépendances**
 
-   Ouvrez un navigateur et allez à l’adresse suivante :
+   .. code-block:: bash
 
-   .. code-block:: none
+      pip install -r requirements.txt
 
-      http://localhost:8000
+4. **Lancer le serveur de développement**
+
+   .. code-block:: bash
+
+      python manage.py runserver
+
+
+Déploiement en production avec Docker
+-------------------------------------
+
+1. **Construire l'image Docker**
+
+   .. code-block:: bash
+
+      docker build -t orange-county-lettings .
+
+2. **Lancer un conteneur localement**
+
+   .. code-block:: bash
+
+      docker run -d -p 8000:8000 orange-county-lettings
+
+   Le site sera accessible sur http://localhost:8000
+
+3. **Déploiement sur Render (ou tout autre PaaS)**
+
+   - Pousser l’image sur DockerHub si nécessaire :
+
+     .. code-block:: bash
+
+        docker tag orange-county-lettings andresur/orange-county-lettings
+        docker push andresur/orange-county-lettings
+
+   - Créer un service web sur [https://render.com](https://render.com)
+   - Ajouter les variables d’environnement nécessaires (`DEBUG`, `ALLOWED_HOSTS`, etc.)
+   - Renseigner le `Dockerfile` dans le dépôt.
+   - Définir la commande de lancement (par exemple : `gunicorn oc_lettings_site.wsgi:application`)
+
+Maintenance et mise à jour
+--------------------------
+
+- Pour appliquer des mises à jour, faire un `git push` vers la branche déployée.
+- Render (ou un autre système CI/CD) relancera automatiquement le build.
+- Pour tester avant en local :
+
+  .. code-block:: bash
+
+     docker-compose down
+     docker-compose up --build
+
+Sauvegarde de la base de données
+--------------------------------
+
+Si la base est en SQLite :
+
+- Faire une copie du fichier `.sqlite3`
+
+   .. code-block:: bash
+
+      cp new_base.sqlite3 backup.sqlite3

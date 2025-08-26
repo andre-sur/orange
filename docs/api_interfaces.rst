@@ -1,7 +1,8 @@
 Interfaces de programmation
 ===========================
 
-Le projet Orange County Lettings est une application Django de type monolithique, qui expose ses fonctionnalités via des vues HTML plutôt que par une API REST complète. Cependant, les interfaces de programmation internes (vues, URL, modèles) constituent l'ossature du projet.
+Le projet Orange County Lettings est une application Django, dont les fonctionnalités se font via des vues HTML plutôt que par une API REST complète. 
+Cependant, les interfaces de programmation internes (vues, URL, modèles) constituent l'ossature du projet.
 
 Vues (views)
 ------------
@@ -22,7 +23,7 @@ Les vues sont réparties dans plusieurs modules selon leur fonction :
 URLs (routes)
 -------------
 
-Les URL sont définies dans les fichiers `urls.py` respectifs de chaque application :
+Les URL sont définies dans `urls.py` :
 
 - `/` → Vue d’accueil
 - `/lettings/` → Liste des locations
@@ -33,19 +34,10 @@ Les URL sont définies dans les fichiers `urls.py` respectifs de chaque applicat
 Modèles accessibles
 -------------------
 
-Les modèles peuvent être utilisés dans des scripts internes, des tâches d’administration ou dans des appels depuis d’autres composants Django :
+Les modèles sont les suivants :
 
 - `Letting`
 - `Address`
 - `Profile`
 
-Exemple d’utilisation interne
------------------------------
 
-Voici un exemple d’appel interne depuis une autre vue Django :
-
-```python
-from lettings.models import Letting
-
-def nombre_de_locations():
-    return Letting.objects.count()

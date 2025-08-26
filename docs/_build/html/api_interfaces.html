@@ -35,7 +35,8 @@
             
   <section id="interfaces-de-programmation">
 <h1>Interfaces de programmation<a class="headerlink" href="#interfaces-de-programmation" title="Lien vers cette rubrique">¶</a></h1>
-<p>Le projet Orange County Lettings est une application Django de type monolithique, qui expose ses fonctionnalités via des vues HTML plutôt que par une API REST complète. Cependant, les interfaces de programmation internes (vues, URL, modèles) constituent l'ossature du projet.</p>
+<p>Le projet Orange County Lettings est une application Django, dont les fonctionnalités se font via des vues HTML plutôt que par une API REST complète.
+Cependant, les interfaces de programmation internes (vues, URL, modèles) constituent l'ossature du projet.</p>
 <section id="vues-views">
 <h2>Vues (views)<a class="headerlink" href="#vues-views" title="Lien vers cette rubrique">¶</a></h2>
 <p>Les vues sont réparties dans plusieurs modules selon leur fonction :</p>
@@ -52,7 +53,7 @@
 </section>
 <section id="urls-routes">
 <h2>URLs (routes)<a class="headerlink" href="#urls-routes" title="Lien vers cette rubrique">¶</a></h2>
-<p>Les URL sont définies dans les fichiers <cite>urls.py</cite> respectifs de chaque application :</p>
+<p>Les URL sont définies dans <cite>urls.py</cite> :</p>
 <ul class="simple">
 <li><p><cite>/</cite> → Vue d’accueil</p></li>
 <li><p><cite>/lettings/</cite> → Liste des locations</p></li>
@@ -63,22 +64,12 @@
 </section>
 <section id="modeles-accessibles">
 <h2>Modèles accessibles<a class="headerlink" href="#modeles-accessibles" title="Lien vers cette rubrique">¶</a></h2>
-<p>Les modèles peuvent être utilisés dans des scripts internes, des tâches d’administration ou dans des appels depuis d’autres composants Django :</p>
+<p>Les modèles sont les suivants :</p>
 <ul class="simple">
 <li><p><cite>Letting</cite></p></li>
 <li><p><cite>Address</cite></p></li>
 <li><p><cite>Profile</cite></p></li>
 </ul>
-</section>
-<section id="exemple-dutilisation-interne">
-<h2>Exemple d’utilisation interne<a class="headerlink" href="#exemple-dutilisation-interne" title="Lien vers cette rubrique">¶</a></h2>
-<p>Voici un exemple d’appel interne depuis une autre vue Django :</p>
-<p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>python
-from lettings.models import Letting</p>
-<dl class="simple">
-<dt>def nombre_de_locations():</dt><dd><p>return Letting.objects.count()</p>
-</dd>
-</dl>
 </section>
 </section>
 
@@ -119,11 +110,10 @@ from lettings.models import Letting</p>
 <li class="toctree-l2"><a class="reference internal" href="#vues-views">Vues (views)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#urls-routes">URLs (routes)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#modeles-accessibles">Modèles accessibles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exemple-dutilisation-interne">Exemple d’utilisation interne</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="guide_utilisation.html">Guide d’utilisation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="deploiement.html">Procédures de déploiement et de gestion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploiement.html">Déploiement non local</a></li>
 </ul>
 
 <div class="relations">

@@ -1,95 +1,74 @@
-Procédures de déploiement et de gestion
-=======================================
+Déploiement non local
+=====================
 
-Cette section détaille les étapes nécessaires pour déployer et maintenir l'application *Orange County Lettings* en production.
+Déploiement avec Docker
+-----------------------
 
-Déploiement local (développement)
----------------------------------
-
-1. **Cloner le dépôt**
-
-   .. code-block:: bash
-
-      git clone https://github.com/votre-utilisateur/orange-county-lettings.git
-      cd orange-county-lettings
-
-2. **Créer un environnement virtuel**
-
-   .. code-block:: bash
-
-      python -m venv env
-      source env/bin/activate  # sous Linux/macOS
-      env\Scripts\activate     # sous Windows
-
-3. **Installer les dépendances**
-
-   .. code-block:: bash
-
-      pip install -r requirements.txt
-
-4. **Lancer le serveur de développement**
-
-   .. code-block:: bash
-
-      python manage.py runserver
-
-Déploiement en production avec Docker
--------------------------------------
-
-1. **Construire l'image Docker**
+1. **Construire l’image Docker** :
 
    .. code-block:: bash
 
       docker build -t orange-county-lettings .
 
-2. **Lancer un conteneur localement**
+2. **Lancer un conteneur** :
 
    .. code-block:: bash
 
       docker run -d -p 8000:8000 orange-county-lettings
 
-   Le site sera accessible sur http://localhost:8000
+   Le site sera accessible sur :
 
-3. **Déploiement sur Render (ou tout autre PaaS)**
+   .. code-block:: none
 
-   - Pousser l’image sur DockerHub si nécessaire :
+      http://localhost:8000
+
+
+Déploiement sur Render (ou autre PaaS)
+--------------------------------------
+
+1. **Pousser l’image Docker sur DockerHub (si nécessaire)** :
+
+   .. code-block:: bash
+
+      docker tag orange-county-lettings andresur/orange-county-lettings
+      docker push andresur/orange-county-lettings
+
+2. **Configurer un service web sur Render** :
+
+   - Créer un service web sur `https://render.com <https://render.com>`_
+   - Ajouter les variables d’environnement nécessaires (``DEBUG``, ``ALLOWED_HOSTS``, etc.)
+   - Indiquer le ``Dockerfile`` présent dans le dépôt
+   - Définir la commande de lancement, par exemple :
 
      .. code-block:: bash
 
-        docker tag orange-county-lettings andresur/orange-county-lettings
-        docker push andresur/orange-county-lettings
+        gunicorn oc_lettings_site.wsgi:application
 
-   - Créer un service web sur [https://render.com](https://render.com)
-   - Ajouter les variables d’environnement nécessaires (`DEBUG`, `ALLOWED_HOSTS`, etc.)
-   - Renseigner le `Dockerfile` dans le dépôt.
-   - Définir la commande de lancement (par exemple : `gunicorn oc_lettings_site.wsgi:application`)
 
 Maintenance et mise à jour
 --------------------------
 
-- Pour appliquer des mises à jour, faire un `git push` vers la branche déployée.
-- Render (ou un autre système CI/CD) relancera automatiquement le build.
-- Pour tester avant en local :
+- Pour appliquer des mises à jour, poussez vos changements :
+
+  .. code-block:: bash
+
+     git push
+
+  Render (ou tout autre CI/CD configuré) déclenchera automatiquement un nouveau build.
+
+- Pour tester les mises à jour en local avant déploiement :
 
   .. code-block:: bash
 
      docker-compose down
      docker-compose up --build
 
+
 Sauvegarde de la base de données
 --------------------------------
 
-Si la base est en SQLite :
+Si vous utilisez SQLite, il suffit de copier le fichier ``.sqlite3`` :
 
-- Faire une copie du fichier `.sqlite3`
+.. code-block:: bash
 
-   .. code-block:: bash
-
-      cp new_base.sqlite3 backup.sqlite3
-
-- Si la base est sur PostgreSQL (prod), utiliser `pg_dump` :
-
-   .. code-block:: bash
-
-      pg_dump -U user dbname > backup.sql
-
+   cp new_base.sqlite3 backup.sqlite3
