@@ -9,7 +9,7 @@ class LettingsTests(TestCase):
 
     Cette classe vérifie :
     - L'accessibilité de la page d'index des lettings (test d'intégration).
-    - L'accessibilité de la page de détail 
+    - L'accessibilité de la page de détail
     d'un letting spécifique (test d'intégration).
 
     Attributs:
@@ -57,7 +57,7 @@ class LettingsTests(TestCase):
     # ----------------------------
     def test_letting_detail(self):
         """
-        Vérifie que la vue du détail d'un letting spécifique 
+        Vérifie que la vue du détail d'un letting spécifique
         retourne un code HTTP 200.
 
         Type: Test d'intégration
@@ -74,7 +74,7 @@ class LettingsTests(TestCase):
         Vérifie la méthode __str__ du modèle Letting.
 
         Type: Test unitaire
-        Pourquoi: teste uniquement la méthode __str__ 
+        Pourquoi: teste uniquement la méthode __str__
         sans interaction avec d'autres composants.
         """
         self.assertEqual(str(self.letting), "Nice Letting")

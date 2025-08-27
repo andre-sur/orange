@@ -8,7 +8,7 @@ class Profile(models.Model):
 
     Attributs:
         user (OneToOneField): L'utilisateur associé à ce profil.
-        favorite_city (CharField): La ville 
+        favorite_city (CharField): La ville
         favorite de l'utilisateur (optionnelle).
     """
 
