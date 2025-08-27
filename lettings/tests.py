@@ -80,7 +80,9 @@ class LettingsTests(TestCase):
         """
         self.assertEqual(str(self.letting), "Nice Letting")
 
+
 class AddressModelTests(TestCase):
+
     def test_zip_code_too_large(self):
         """zip_code > 99999 doit lever une ValidationError"""
         addr = Address(zip_code=123456, country_iso_code="FRA")

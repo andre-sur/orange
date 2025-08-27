@@ -48,4 +48,3 @@ class ProfilesTests(TestCase):
             reverse("profile", args=[self.user.username])
         )
         self.assertEqual(response.status_code, 200)
-
