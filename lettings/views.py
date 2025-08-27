@@ -25,7 +25,7 @@ def letting(request, letting_id):
     """
     Affiche les détails d'une location spécifique.
 
-    Récupère l'objet Letting correspondant à l'ID fourni. 
+    Récupère l'objet Letting correspondant à l'ID fourni.
     Si aucun objet n'est trouvé, retourne une erreur 404.
     Passe le titre et l'adresse au template 'letting.html'.
 

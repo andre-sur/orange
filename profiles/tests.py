@@ -41,7 +41,8 @@ class ProfilesTests(TestCase):
 
     def test_profile_detail(self):
         """
-        Teste que la vue du détail d'un profil spécifique retourne un code HTTP 200.
+        Teste que la vue du détail d'un profil spécifique
+          retourne un code HTTP 200.
         """
         response = self.client.get(
             reverse("profile", args=[self.user.username])

@@ -25,7 +25,7 @@ def profile(request, username):
     """
     Affiche les détails d'un profil spécifique.
 
-    Récupère l'objet Profile correspondant au nom d'utilisateur fourni. 
+    Récupère l'objet Profile correspondant au nom d'utilisateur fourni.
     Si aucun profil n'est trouvé, retourne une erreur 404.
     Passe l'objet profil au template 'profile.html'.
 

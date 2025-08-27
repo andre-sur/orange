@@ -8,7 +8,8 @@ class Profile(models.Model):
 
     Attributs:
         user (OneToOneField): L'utilisateur associé à ce profil.
-        favorite_city (CharField): La ville favorite de l'utilisateur (optionnelle).
+        favorite_city (CharField): La ville 
+        favorite de l'utilisateur (optionnelle).
     """
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -17,7 +18,6 @@ class Profile(models.Model):
     class Meta:
         db_table = "oc_lettings_site_profile"
         managed = False
-
 
     def __str__(self):
         """

@@ -29,7 +29,8 @@ with open(output_file, "w", encoding="utf-8") as f:
 
     # 3. Lancer une requête pour favorite_city commençant par 'B'
     cursor.execute(
-        "SELECT user_id, favorite_city FROM profiles_profile WHERE favorite_city LIKE 'P%';"
+        "SELECT user_id, favorite_city FROM " \
+        "profiles_profile WHERE favorite_city LIKE 'P%';"
     )
     rows = cursor.fetchall()
     f.write("Résultats des profils avec favorite_city commençant par P :\n")
