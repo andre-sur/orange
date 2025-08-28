@@ -37,6 +37,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "orange-vpow.onrender.com",
     "orange-1-mrta.onrender.com",
+    "lettings-app-latest.onrender.com"
 ]
 
 
